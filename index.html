@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sustentabilidade</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1b4332, #2d6a4f, #40916c);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  .app { width: 100%; max-width: 700px; }
+
+  header { text-align: center; margin-bottom: 24px; }
+  header h1 { font-size: 2rem; margin-bottom: 6px; letter-spacing: 2px; }
+  header p { color: #cfe8d8; font-size: 1rem; }
+
+  .page { display: none; animation: fade .4s ease; }
+  .page.active { display: block; }
+
+  @keyframes fade { from { opacity: 0; transform: translateY(12px);} to { opacity: 1; transform: translateY(0);} }
+
+  .intro {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    font-size: 1.05rem;
+  }
+
+  .cards { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+
+  .card {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 16px;
+    padding: 26px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform .2s, background .2s;
+  }
+  .card:hover { transform: translateY(-6px); background: rgba(255,255,255,.18); }
+  .card .icon { font-size: 3rem; display: block; margin-bottom: 12px; }
+  .card h2 { font-size: 1.2rem; margin-bottom: 6px; }
+  .card span.tag { font-size: .8rem; color: #b7e4c7; }
+
+  .detail {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 16px;
+    padding: 28px;
+    line-height: 1.75;
+  }
+  .detail h2 { font-size: 1.7rem; margin-bottom: 4px; }
+  .detail .tag { display: inline-block; font-size: .8rem; padding: 4px 12px; border-radius: 999px; margin-bottom: 16px; background: #2d6a4f; }
+  .detail h3 { margin-top: 20px; margin-bottom: 6px; font-size: 1.1rem; color: #ffd166; }
+  .detail ul { margin-left: 22px; }
+  .detail li { margin-bottom: 6px; }
+  .detail p { margin-bottom: 10px; }
+
+  .figura {
+    background: rgba(0,0,0,.25);
+    border-radius: 14px;
+    padding: 12px;
+    margin-top: 14px;
+    text-align: center;
+  }
+  .figura svg { width: 100%; max-width: 380px; height: auto; }
+  .figura p { font-size: .85rem; color: #d8f3dc; margin-top: 8px; }
+
+  .voltar {
+    margin-top: 24px;
+    background: #ffd166;
+    color: #1b1b1b;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+  }
+  .voltar:hover { background: #ffe19a; transform: translateX(-4px); }
+
+  footer { text-align: center; margin-top: 32px; color: #a7cbb5; font-size: .85rem; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>&#127793; SUSTENTABILIDADE</h1>
+    <p>Cuide do planeta: res&#237;duos, &#225;gua e energia</p>
+  </header>
+
+  <!-- P&#225;gina inicial -->
+  <section id="inicio" class="page active">
+    <div class="intro">
+      A sustentabilidade &#233; cuidar dos recursos da Terra para n&#227;o faltar no futuro.
+      Conhe&#231;a os temas abaixo: <strong>Reciclagem</strong>, <strong>ETA e ETE</strong> e <strong>Energias</strong>.
+    </div>
+
+    <div class="cards">
+      <div class="card" onclick="mostrar('reciclagem')">
+        <span class="icon">&#9851;&#65039;</span>
+        <h2>Reciclagem</h2>
+        <span class="tag">Reduzir, reutilizar, reciclar</span>
+      </div>
+      <div class="card" onclick="mostrar('etaete')">
+        <span class="icon">&#128167;</span>
+        <h2>ETA e ETE</h2>
+        <span class="tag">Tratamento de &#225;gua e esgoto</span>
+      </div>
+      <div class="card" onclick="mostrar('energias')">
+        <span class="icon">&#9889;</span>
+        <h2>Energias</h2>
+        <span class="tag">Renov&#225;veis: solar, hidro e e&#243;lica</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reciclagem -->
+  <section id="reciclagem" class="page">
+    <div class="detail">
+      <h2>&#9851;&#65039; Reciclagem</h2>
+      <span class="tag">Reduzir &#183; Reutilizar &#183; Reciclar</span>
+
+      <h3>O que &#233;?</h3>
+      <p>&#201; o processo de transformar lixo em novos produtos. Em vez de jogar papel, vidro, pl&#225;stico e metal no lix&#227;o, eles s&#227;o recolhidos, processados e viram materias-primas para fabricar coisas novas, economizando recursos naturais e energia.</p>
+
+      <h3>Como funciona?</h3>
+      <ul>
+        <li>Separa&#231;&#227;o: cada material &#233; separado na fonte (casa, escola).</li>
+        <li>Coleta: os catadores ou a prefeitura recolhem o material.</li>
+        <li>Centro de triagem: o lixo &#233; separado por tipo e limpo.</li>
+        <li>Ind&#250;stria: o material vira matéria-prima e um produto novo.</li>
+      </ul>
+
+      <h3>O que pode ser reciclado?</h3>
+      <ul>
+        <li>Papel e papel&#227;o</li>
+        <li>Vidro (garrafas, potes)</li>
+        <li>Pl&#225;stico (garrafas PET, embalagens)</li>
+        <li>Metal (latas de alum&#237;nio e a&#231;o)</li>
+        <li>Eletr&#244;nicos e &#243;leos</li>
+      </ul>
+
+      <h3>Vantagens</h3>
+      <ul>
+        <li>Reduz a quantidade de lixo em aterros e lix&#245;es.</li>
+        <li>Economiza &#225;rvores, &#225;gua e energias.</li>
+        <li>Gera empregos (catadores e ind&#250;strias de reciclagem).</li>
+      </ul>
+
+      <div class="figura">
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="220" fill="#2d6a4f"/>
+          <circle cx="130" cy="110" r="55" fill="none" stroke="#4cc9f0" stroke-width="10" stroke-dasharray="70,30"/>
+          <polygon points="185,70 200,85 178,92" fill="#4cc9f0"/>
+          <circle cx="270" cy="110" r="55" fill="none" stroke="#ffd166" stroke-width="10" stroke-dasharray="70,30"/>
+          <polygon points="215,150 230,135 247,158" fill="#ffd166"/>
+          <text x="130" y="118" font-size="26" text-anchor="middle">&#128196;</text>
+          <text x="270" y="118" font-size="26" text-anchor="middle">&#128196;</text>
+          <text x="200" y="205" font-size="13" fill="#d8f3dc" text-anchor="middle">O papel usado vira papel novo</text>
+        </svg>
+        <p>Ciclo da reciclagem: o material usado volta &#224; ind&#250;stria e nasce um produto novo.</p>
+      </div>
+
+      <button class="voltar" onclick="mostrar('inicio')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- ETA e ETE -->
+  <section id="etaete" class="page">
+    <div class="detail">
+      <h2>&#128167; ETA e ETE</h2>
+      <span class="tag">&#193;gua limpa para todos</span>
+
+      <h3>O que &#233; a ETA?</h3>
+      <p>ETA &#233; <strong>Estação de Tratamento de &#193;gua</strong>. &#201; onde a &#225;gua bruta (de rio, represa ou po&#231;o) &#233; tratada para virar &#225;gua pot&#225;vel, que pode ser bebida com seguran&#231;a.</p>
+
+      <h3>O que &#233; a ETE?</h3>
+      <p>ETE &#233; <strong>Estação de Tratamento de Esgoto</strong>. L&#225;, o esgoto dom&#233;stico (de banheiras, vasos e cozinha) &#233; tratado antes de voltar aos rios, para n&#227;o poluir o meio ambiente.</p>
+
+      <h3>Como funciona a ETA?</h3>
+      <ul>
+        <li>Coleta&#231;&#227;o: a &#225;gua bruta &#233; bombeada do rio ou represa.</li>
+        <li>Coagula&#231;&#227;o e flocula&#231;&#227;o: sujeira gr&#250;pa e desce.</li>
+        <li>Sedimenta&#231;&#227;o: as sujeiras pesadas caem no fundo.</li>
+        <li>Filtra&#231;&#227;o: areia e carv&#227;o retiram o que sobrou.</li>
+        <li>Desinfec&#231;&#227;o: cloro mata microorganismos e a &#225;gua est&#225; pronta.</li>
+      </ul>
+
+      <h3>Como funciona a ETE?</h3>
+      <ul>
+        <li>Grade: retira objetos grandes (lixo jogado na pia).</li>
+        <li>Decanta&#231;&#227;o: s&#243;lidos pesados s&#227;o separados.</li>
+        <li>Biorreatores: micro-organismos comem a materia org&#226;nica.</li>
+        <li>Tratamento final: o &#225;gua &#233; devolvida limpa ao rio.</li>
+      </ul>
+
+      <h3>Import&#226;ncia</h3>
+      <ul>
+        <li>Evita doen&#231;as como c&#243;lera e diarreia.</li>
+        <li>Protege rios, peixes e outros animais.</li>
+        <li>Garante &#225;gua pot&#225;vel na torneira das casas.</li>
+      </ul>
+
+      <div class="figura">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="200" fill="#1b4332"/>
+          <rect x="20" y="60" width="90" height="80" rx="8" fill="#457b9d"/>
+          <text x="65" y="105" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">ETA</text>
+          <rect x="155" y="60" width="90" height="80" rx="8" fill="#2a9d8f"/>
+          <text x="200" y="105" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">Filtro</text>
+          <rect x="290" y="60" width="90" height="80" rx="8" fill="#457b9d"/>
+          <text x="335" y="105" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">&#193;gua</text>
+          <line x1="110" y1="100" x2="155" y2="100" stroke="#90e0ef" stroke-width="4"/>
+          <polygon points="155,94 168,100 155,106" fill="#90e0ef"/>
+          <line x1="245" y1="100" x2="290" y2="100" stroke="#90e0ef" stroke-width="4"/>
+          <polygon points="290,94 303,100 290,106" fill="#90e0ef"/>
+          <text x="65" y="155" font-size="11" fill="#cfe8d8" text-anchor="middle">&#193;gua bruta</text>
+          <text x="200" y="155" font-size="11" fill="#cfe8d8" text-anchor="middle">Limpa sujeira</text>
+          <text x="335" y="155" font-size="11" fill="#cfe8d8" text-anchor="middle">Pronta para beber</text>
+          <text x="200" y="185" font-size="12" fill="#ffd166" text-anchor="middle">Tratamento da &#225;gua na ETA</text>
+        </svg>
+        <p>Na ETA, a &#225;gua suja passa por v&#225;rias etapas e sai limpa e segura.</p>
+      </div>
+
+      <button class="voltar" onclick="mostrar('inicio')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- Energias (menu) -->
+  <section id="energias" class="page">
+    <div class="detail">
+      <h2>&#9889; Energias</h2>
+      <span class="tag">Fontes de energia</span>
+
+      <p>Existem v&#225;rias fontes de energia no mundo. Elas se dividem em dois grupos: <strong>renov&#225;veis</strong> (se renovam sozinhas, como sol e vento) e <strong>n&#227;o renov&#225;veis</strong> (acabam um dia, como petr&#243;leo e carv&#227;o). Escolha uma op&#231;&#227;o:</p>
+
+      <div class="cards" style="margin-top:20px;">
+        <div class="card" onclick="mostrar('renovaveis')">
+          <span class="icon">&#127793;</span>
+          <h2>Renov&#225;veis</h2>
+          <span class="tag">5 fontes renov&#225;veis</span>
+        </div>
+        <div class="card" onclick="mostrar('naorenovaveis')">
+          <span class="icon">&#128293;</span>
+          <h2>N&#227;o Renov&#225;veis</h2>
+          <span class="tag">Petr&#243;leo, carv&#227;o, g&#225;s e nuclear</span>
+        </div>
+      </div>
+
+      <button class="voltar" onclick="mostrar('inicio')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- Renov&#225;veis (menu) -->
+  <section id="renovaveis" class="page">
+    <div class="detail">
+      <h2>&#127793; Energias Renov&#225;veis</h2>
+      <span class="tag">N&#227;o acabam e n&#227;o poluem</span>
+
+      <p>S&#227;m fontes que a natureza rep&#244;e sem parar e, na maioria das vezes, n&#227;o poluem. Conhe&#231;a as 5 fontes abaixo:</p>
+
+      <div class="cards" style="margin-top:20px;">
+        <div class="card" onclick="mostrar('hidreletrica')">
+          <span class="icon">&#127783;</span>
+          <h2>Hidrel&#233;trica</h2>
+          <span class="tag">For&#231;a da &#225;gua</span>
+        </div>
+        <div class="card" onclick="mostrar('solar')">
+          <span class="icon">&#9728;&#65039;</span>
+          <h2>Solar</h2>
+          <span class="tag">Luz do sol</span>
+        </div>
+        <div class="card" onclick="mostrar('eolica')">
+          <span class="icon">&#127788;</span>
+          <h2>E&#243;lica</h2>
+          <span class="tag">For&#231;a do vento</span>
+        </div>
+        <div class="card" onclick="mostrar('biomassa')">
+          <span class="icon">&#127794;</span>
+          <h2>Biomassa</h2>
+          <span class="tag">Res&#237;duos e plantas</span>
+        </div>
+        <div class="card" onclick="mostrar('geotermica')">
+          <span class="icon">&#128293;</span>
+          <h2>Geot&#233;rmica</h2>
+          <span class="tag">Calor da Terra</span>
+        </div>
+      </div>
+
+      <button class="voltar" onclick="mostrar('energias')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- N&#227;o Renov&#225;veis (menu) -->
+  <section id="naorenovaveis" class="page">
+    <div class="detail">
+      <h2>&#128293; Energias N&#227;o Renov&#225;veis</h2>
+      <span class="tag">Acabam um dia e poluem</span>
+
+      <p>S&#227;m fontes finitas: existe uma quantidade limitada na Terra e, quando queimadas, poluem o ar e o clima. Conhe&#237;-las:</p>
+
+      <div class="cards" style="margin-top:20px;">
+        <div class="card" onclick="mostrar('petroleo')">
+          <span class="icon">&#128294;</span>
+          <h2>Petr&#243;leo</h2>
+          <span class="tag">Combust&#237;vel f&#243;ssil l&#237;quido</span>
+        </div>
+        <div class="card" onclick="mostrar('carvao')">
+          <span class="icon">&#129681;</span>
+          <h2>Carv&#227;o</h2>
+          <span class="tag">Combust&#237;vel f&#243;ssil s&#243;lido</span>
+        </div>
+        <div class="card" onclick="mostrar('gas')">
+          <span class="icon">&#128293;</span>
+          <h2>G&#225;s Natural</h2>
+          <span class="tag">Combust&#237;vel f&#243;ssil gasoso</span>
+        </div>
+        <div class="card" onclick="mostrar('nuclear')">
+          <span class="icon">&#9883;&#65039;</span>
+          <h2>Nuclear</h2>
+          <span class="tag">Uranio na usina</span>
+        </div>
+      </div>
+
+      <button class="voltar" onclick="mostrar('energias')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- Hidrel&#233;trica -->
+  <section id="hidreletrica" class="page">
+    <div class="detail">
+      <h2>&#127783; Energia Hidrel&#233;trica</h2>
+      <span class="tag">Renov&#225;vel</span>
+
+      <h3>O que &#233;?</h3>
+      <p>&#201; a energia obtida a partir da for&#231;a da &#225;gua. Nas usinas hidrel&#233;tricas, a &#225;gua de um rio ou represa cai ou corre com for&#231;a e move as p&#225;ginas de uma turbina, que gera eletricidade.</p>
+
+      <h3>Como funciona?</h3>
+      <ul>
+        <li>A &#225;gua &#233; armazenada em uma represa (a&#231;ude).</li>
+        <li>Ao passar pela turbina, a &#225;gua faz o eixo girar.</li>
+        <li>A turbina est&#225; ligada a um gerador, que produz energia el&#233;trica.</li>
+      </ul>
+
+      <h3>Vantagens</h3>
+      <ul>
+        <li>&#201; renov&#225;vel e n&#227;o polui no momento da gera&#231;&#227;o.</li>
+        <li>Pode armazenar &#225;gua para gerar energia quando necess&#225;rio.</li>
+        <li>Produz grandes quantidades de eletricidade.</li>
+      </ul>
+
+      <h3>Desvantagens</h3>
+      <ul>
+        <li>Obras grandes podem afetar animais e pessoas da regi&#227;o.</li>
+        <li>Depende da chuva: em secas fortes, a produ&#231;&#227;o cai.</li>
+      </ul>
+
+      <div class="figura">
+        <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="240" fill="#0b3d5c"/>
+          <ellipse cx="120" cy="80" rx="110" ry="60" fill="#1e90c8"/>
+          <ellipse cx="120" cy="75" rx="100" ry="50" fill="#3aa8e0"/>
+          <polygon points="200,40 230,200 260,200 230,40" fill="#8d99ae"/>
+          <polygon points="195,40 230,30 265,40 255,200 205,200" fill="#adb5bd"/>
+          <path d="M215 130 Q222 135 238 132 L232 200 L218 200 Z" fill="#4cc9f0" opacity=".9"/>
+          <circle cx="225" cy="168" r="14" fill="#ffd166"/>
+          <circle cx="225" cy="168" r="5" fill="#e07b00"/>
+          <rect x="270" y="140" width="70" height="50" rx="6" fill="#f4a261"/>
+          <polygon points="265,140 305,105 345,140" fill="#e76f51"/>
+          <rect x="295" y="160" width="16" height="30" fill="#6d597a"/>
+          <rect x="278" y="150" width="14" height="12" fill="#90e0ef"/>
+          <line x1="240" y1="168" x2="270" y2="168" stroke="#ffd166" stroke-width="3" stroke-dasharray="5,4"/>
+          <rect x="0" y="200" width="400" height="40" fill="#2d6a4f"/>
+          <path d="M215 200 L210 240 L240 240 L235 200" fill="#4cc9f0" opacity=".7"/>
+          <text x="90" y="40" font-size="13" fill="#fff" text-anchor="middle">Represa</text>
+          <text x="225" y="220" font-size="12" fill="#fff" text-anchor="middle">Turbina</text>
+          <text x="305" y="130" font-size="12" fill="#fff" text-anchor="middle">Casa</text>
+          <text x="45" y="228" font-size="11" fill="#d8f3dc">Rio</text>
+        </svg>
+        <p>Como funciona: a &#225;gua da represa cai pela tubula&#231;&#227;o, gira a turbina e produz eletricidade para as casas.</p>
+      </div>
+
+      <button class="voltar" onclick="mostrar('renovaveis')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- Solar -->
+  <section id="solar" class="page">
+    <div class="detail">
+      <h2>&#9728;&#65039; Energia Solar</h2>
+      <span class="tag">Renov&#225;vel</span>
+
+      <h3>O que &#233;?</h3>
+      <p>&#201; a energia que vem do sol. Atrav&#233;s de pain&#233;is (placas solares), a luz do sol &#233; convertida em eletricidade ou usada para aquecer &#225;gua.</p>
+
+      <h3>Como funciona?</h3>
+      <ul>
+        <li>Os pain&#233;is t&#234;m c&#233;lulas fotovoltaicas que captam a luz do sol.</li>
+        <li>A luz gera eletricidade nos pain&#232;is (efeito fotovoltaico).</li>
+        <li>Pain&#232;is t&#233;rmicos aquecem &#225;gua usando o calor do sol.</li>
+      </ul>
+
+      <h3>Vantagens</h3>
+      <ul>
+        <li>O sol &#233; gratuito e infinito para n&#243;s.</li>
+        <li>N&#227;o emite polui&#231;&#227;o nem ru&#237;do.</li>
+        <li>Pode ser instalado em casas, escolas e empresas.</li>
+      </ul>
+
+      <h3>Desvantagens</h3>
+      <ul>
+        <li>N&#227;o gera energia &#224; noite ou em dias muito nublados.</li>
+        <li>Pain&#232;is ocupam bastante espa&#231;o.</li>
+        <li>O custo inicial dos pain&#232;is ainda &#233; alto.</li>
+      </ul>
+
+      <div class="figura">
+        <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="240" fill="#87ceeb"/>
+          <circle cx="70" cy="55" r="32" fill="#ffd166"/>
+          <g stroke="#ffd166" stroke-width="4" stroke-linecap="round">
+            <line x1="70" y1="10" x2="70" y2="0"/>
+            <line x1="118" y1="55" x2="130" y2="55"/>
+            <line x1="104" y1="22" x2="113" y2="13"/>
+            <line x1="36" y1="22" x2="27" y2="13"/>
+          </g>
+          <polygon points="95,40 175,95 167,102 87,47" fill="#ffd166" opacity=".65"/>
+          <polygon points="120,28 190,88 182,95 112,35" fill="#ffd166" opacity=".65"/>
+          <polygon points="200,155 320,155 300,115 220,115" fill="#1d3557"/>
+          <line x1="210" y1="117" x2="222" y2="153" stroke="#a8dadc" stroke-width="2"/>
+          <line x1="235" y1="117" x2="247" y2="153" stroke="#a8dadc" stroke-width="2"/>
+          <line x1="260" y1="117" x2="272" y2="153" stroke="#a8dadc" stroke-width="2"/>
+          <line x1="285" y1="117" x2="297" y2="153" stroke="#a8dadc" stroke-width="2"/>
+          <rect x="248" y="155" width="10" height="45" fill="#6d597a"/>
+          <rect x="330" y="155" width="60" height="42" rx="5" fill="#f4a261"/>
+          <polygon points="325,155 360,128 395,155" fill="#e76f51"/>
+          <rect x="352" y="175" width="14" height="22" fill="#6d597a"/>
+          <line x1="258" y1="135" x2="330" y2="160" stroke="#ffd166" stroke-width="3" stroke-dasharray="5,4"/>
+          <rect x="0" y="200" width="400" height="40" fill="#2d6a4f"/>
+          <text x="70" y="105" font-size="13" fill="#333" text-anchor="middle">Sol</text>
+          <text x="260" y="108" font-size="13" fill="#333" text-anchor="middle">Painel solar</text>
+          <text x="360" y="150" font-size="12" fill="#333" text-anchor="middle">Casa</text>
+        </svg>
+        <p>Como funciona: o sol bate nos pain&#233;is, as c&#233;lulas fotovoltaicas convertem a luz em eletricidade e levam at&#233; &#224;s casas.</p>
+      </div>
+
+      <button class="voltar" onclick="mostrar('renovaveis')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- E&#243;lica -->
+  <section id="eolica" class="page">
+    <div class="detail">
+      <h2>&#127788; Energia E&#243;lica</h2>
+      <span class="tag">Renov&#225;vel</span>
+
+      <h3>O que &#233;?</h3>
+      <p>&#201; a energia obtida do vento. Grandes moinhos chamados aerogeradores (turbinas e&#243;licas) giram com o vento e produzem eletricidade.</p>
+
+      <h3>Como funciona?</h3>
+      <ul>
+        <li>O vento empurra as p&#225;ginas da turbina.</li>
+        <li>As p&#225;ginas fazem o eixo girar.</li>
+        <li>O eixo liga a um gerador, que transforma o movimento em energia el&#233;trica.</li>
+      </ul>
+
+      <h3>Vantagens</h3>
+      <ul>
+        <li>&#201; renov&#225;vel e n&#227;o polui.</li>
+        <li>O vento &#233; de gra&#231;a e abundante em v&#225;rias regi&#245;es.</li>
+        <li>Ocupa pouco espa&#231;o no ch&#227;o (o campo continua usable).</li>
+      </ul>
+
+      <h3>Desvantagens</h3>
+      <ul>
+        <li>Depende do vento: sem vento, n&#227;o produz energia.</li>
+        <li>Pode fazer ru&#237;do e incomodar animais como aves.</li>
+        <li>Necessita de grandes espa&#231;os abertos.</li>
+      </ul>
+
+      <div class="figura">
+        <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="240" fill="#87ceeb"/>
+          <g stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".8">
+            <path d="M20 50 Q50 40 80 50"/>
+            <path d="M40 80 Q70 70 100 80"/>
+            <path d="M15 110 Q45 100 75 110"/>
+          </g>
+          <rect x="192" y="90" width="16" height="115" fill="#adb5bd"/>
+          <polygon points="192,205 208,205 215,220 185,220" fill="#6d597a"/>
+          <circle cx="200" cy="88" r="10" fill="#495057"/>
+          <polygon points="200,88 210,20 190,20" fill="#f1faee"/>
+          <polygon points="200,88 260,130 270,120" fill="#f1faee"/>
+          <polygon points="200,88 140,135 148,145" fill="#f1faee"/>
+          <rect x="300" y="160" width="60" height="40" rx="5" fill="#f4a261"/>
+          <polygon points="295,160 330,132 365,160" fill="#e76f51"/>
+          <rect x="322" y="178" width="14" height="22" fill="#6d597a"/>
+          <line x1="215" y1="160" x2="300" y2="175" stroke="#ffd166" stroke-width="3" stroke-dasharray="5,4"/>
+          <rect x="0" y="205" width="400" height="35" fill="#2d6a4f"/>
+          <text x="200" y="238" font-size="12" fill="#d8f3dc" text-anchor="middle">Campo aberto</text>
+          <text x="330" y="155" font-size="12" fill="#333" text-anchor="middle">Casa</text>
+          <text x="50" y="130" font-size="13" fill="#333">Vento</text>
+        </svg>
+        <p>Como funciona: o vento empurra as p&#225;ginas da turbina, o eixo gira no gerador e a energia chega at&#233; &#224;s casas.</p>
+      </div>
+
+      <button class="voltar" onclick="mostrar('renovaveis')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- Biomassa -->
+  <section id="biomassa" class="page">
+    <div class="detail">
+      <h2>&#127794; Energia de Biomassa</h2>
+      <span class="tag">Renov&#225;vel</span>
+
+      <h3>O que &#233;?</h3>
+      <p>&#201; a energia obtida da queima ou decomposi&#231;&#227;o de materiais org&#226;nicos: restos de plantas, madeira, palha, baga&#231;o de cana, recuos da cidade (org&#226;nicos) e mesmo o lixo.</p>
+
+      <h3>Como funciona?</h3>
+      <ul>
+        <li>Os res&#237;duos org&#226;nicos s&#227;o coletados (fazendas, ind&#250;strias e casas).</li>
+        <li>S&#227;o queimados em caldeiras ou fermentados em biodigestores.</li>
+        <li>O calor ou o biog&#225;s gerado move turbinas que produzem eletricidade.</li>
+      </ul>
+
+      <h3>Exemplos</h3>
+      <ul>
+        <li>Baga&#231;o de cana-de-a&#231;&#250;car nas usinas de etanol.</li>
+        <li>Lenha e carv&#227;o vegetal.</li>
+        <li>Biog&#225;s dos lix&#245;es e da&#231;udes de&#231;ad&#244;nicos.</li>
+      </ul>
+
+      <h3>Vantagens</h3>
+      <ul>
+        <li>Usa lixo que iria para o aterro.</li>
+        <li>&#201; renov&#225;vel se as plantas forem replantadas.</li>
+        <li>Diminui a quantidade de res&#237;duos na natureza.</li>
+      </ul>
+
+      <h3>Desvantagens</h3>
+      <ul>
+        <li>A queima pode liberar fuma&#231;a se n&#227;o tiver filtros.</li>
+        <li>Depende do fornecimento constante de res&#237;duos.</li>
+      </ul>
+
+      <div class="figura">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="200" fill="#344e41"/>
+          <g fill="#80b918">
+            <rect x="50" y="90" width="8" height="60"/>
+            <ellipse cx="54" cy="85" rx="22" ry="14"/>
+            <rect x="85" y="100" width="8" height="50"/>
+            <ellipse cx="89" cy="95" rx="18" ry="12"/>
+          </g>
+          <text x="70" y="175" font-size="11" fill="#d8f3dc" text-anchor="middle">Plantas</text>
+          <polygon points="160,60 230,60 215,130 175,130" fill="#adb5bd"/>
+          <path d="M175 90 L215 90 L208 130 L182 130 Z" fill="#e63946"/>
+          <path d="M195 70 Q185 55 195 45 Q205 55 195 70" fill="#ffd166"/>
+          <text x="195" y="155" font-size="11" fill="#d8f3dc" text-anchor="middle">Queima</text>
+          <rect x="280" y="70" width="80" height="70" rx="8" fill="#457b9d"/>
+          <text x="320" y="110" font-size="13" fill="#fff" text-anchor="middle">Energia</text>
+          <line x1="230" y1="95" x2="280" y2="95" stroke="#ffd166" stroke-width="3" stroke-dasharray="5,4"/>
+          <rect x="0" y="165" width="400" height="35" fill="#2d6a4f"/>
+        </svg>
+        <p>Res&#237;duos org&#226;nicos s&#227;o queimados e o calor vira eletricidade.</p>
+      </div>
+
+      <button class="voltar" onclick="mostrar('renovaveis')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- Geot&#233;rmica -->
+  <section id="geotermica" class="page">
+    <div class="detail">
+      <h2>&#128293; Energia Geot&#233;rmica</h2>
+      <span class="tag">Renov&#225;vel</span>
+
+      <h3>O que &#233;?</h3>
+      <p>&#201; a energia que vem do calor do interior da Terra. No centro do planeta existe rocha derretida (magma), que aquece a &#225;gua e as rochas pr&#243;ximas &#224; superf&#237;cie.</p>
+
+      <h3>Como funciona?</h3>
+      <ul>
+        <li>Po&#231;os s&#227;o perfurados at&#233; regi&#245;es quentes do subsolo.</li>
+        <li>O vapor de &#225;gua sobe pelos po&#231;os com muita for&#231;a.</li>
+        <li>O vapor move as turbinas das usinas e gera eletricidade.</li>
+      </ul>
+
+      <h3>Usos</h3>
+      <ul>
+        <li>Gerar eletricidade em usinas geot&#233;rmicas.</li>
+        <li>Aquecer casas e piscinas (banhos termais tamb&#233;m usam essa energia).</li>
+      </ul>
+
+      <h3>Vantagens</h3>
+      <ul>
+        <li>O calor da Terra n&#227;o acaba.</li>
+        <li>N&#227;o polui e ocupa pouco espa&#231;o.</li>
+        <li>Funciona dia e noite, sem depender do clima.</li>
+      </ul>
+
+      <h3>Desvantagens</h3>
+      <ul>
+        <li>S&#243; funciona bem perto de regi&#245;es vulc&#226;nicas.</li>
+        <li>Pode liberar gases do subsolo se n&#227;o tiver cuidado.</li>
+      </ul>
+
+      <div class="figura">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="200" fill="#7b2cbf"/>
+          <rect x="0" y="90" width="400" height="50" fill="#8d6e63"/>
+          <rect x="0" y="140" width="400" height="60" fill="#4a148c"/>
+          <ellipse cx="200" cy="180" rx="120" ry="30" fill="#ff6d00"/>
+          <ellipse cx="200" cy="175" rx="90" ry="20" fill="#ffd166"/>
+          <rect x="190" y="40" width="20" height="110" fill="#adb5bd"/>
+          <polygon points="170,40 230,40 220,55 180,55" fill="#ced4da"/>
+          <g fill="#fff" opacity=".85">
+            <circle cx="200" cy="25" r="7"/>
+            <circle cx="215" cy="15" r="9"/>
+            <circle cx="185" cy="12" r="8"/>
+          </g>
+          <text x="200" y="115" font-size="10" fill="#fff" text-anchor="middle">Vapor</text>
+          <text x="70" y="125" font-size="11" fill="#ffe0b2">Terra</text>
+          <text x="200" y="198" font-size="11" fill="#fff" text-anchor="middle">Magma quente</text>
+        </svg>
+        <p>O calor do magma aquece a &#225;gua, que sobe como vapor e move as turbinas.</p>
+      </div>
+
+      <button class="voltar" onclick="mostrar('renovaveis')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- Petr&#243;leo -->
+  <section id="petroleo" class="page">
+    <div class="detail">
+      <h2>&#128294; Petr&#243;leo</h2>
+      <span class="tag">N&#227;o renov&#225;vel</span>
+
+      <h3>O que &#233;?</h3>
+      <p>&#201; um l&#237;quido espesso e escuro que fica embaixo da Terra. &#201; formado a partir de restos de animais e plantas que viveram h&#225; milh&#245;es de anos. &#201; a mat&#233;ria-prima da gasolina, do diesel e do pl&#225;stico.</p>
+
+      <h3>Como funciona?</h3>
+      <ul>
+        <li>Sondas perfuram o subsolo at&#233; achar o po&#231;o de petr&#243;leo.</li>
+        <li>A bomba joga o l&#237;quido at&#233; a superf&#237;cie.</li>
+        <li>Nas refinarias, o petr&#243;leo vira gasolina, &#243;leo diesel, querosene e pl&#225;stico.</li>
+      </ul>
+
+      <h3>Usos</h3>
+      <ul>
+        <li>Combust&#237;vel de carros, caminh&#227;es e avi&#245;es.</li>
+        <li>Produ&#231;&#227;o de pl&#225;sticos, medicamentos e roupas sint&#233;ticas.</li>
+      </ul>
+
+      <h3>Problemas</h3>
+      <ul>
+        <li>Acaba: n&#227;o se forma de novo em tempo curto.</li>
+        <li>A queima polui o ar e causa o efeito estufa.</li>
+        <li>Vazamentos prejudicam oceanos e animais.</li>
+      </ul>
+
+      <div class="figura">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="200" fill="#2b2d42"/>
+          <rect x="0" y="120" width="400" height="80" fill="#6f4e37"/>
+          <ellipse cx="200" cy="160" rx="70" ry="25" fill="#1a1a1a"/>
+          <rect x="180" y="40" width="40" height="85" fill="#8d99ae"/>
+          <polygon points="200,10 240,40 160,40" fill="#adb5bd"/>
+          <line x1="200" y1="40" x2="200" y2="155" stroke="#4cc9f0" stroke-width="4" stroke-dasharray="6,4"/>
+          <rect x="280" y="70" width="70" height="50" rx="8" fill="#e63946"/>
+          <text x="315" y="100" font-size="12" fill="#fff" text-anchor="middle">Refinaria</text>
+          <line x1="220" y1="100" x2="280" y2="95" stroke="#ffd166" stroke-width="3" stroke-dasharray="5,4"/>
+          <text x="200" y="145" font-size="12" fill="#fff" text-anchor="middle">Petr&#243;leo</text>
+          <text x="90" y="55" font-size="13" fill="#fff" text-anchor="middle">Sonda</text>
+        </svg>
+        <p>A sonda retira o petr&#243;leo do subsolo e leva at&#233; &#224; refinaria para virar combust&#237;vel.</p>
+      </div>
+
+      <button class="voltar" onclick="mostrar('naorenovaveis')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- Carv&#227;o -->
+  <section id="carvao" class="page">
+    <div class="detail">
+      <h2>&#129681; Carv&#227;o</h2>
+      <span class="tag">N&#227;o renov&#225;vel</span>
+
+      <h3>O que &#233;?</h3>
+      <p>&#201; uma rocha preta e dura feita de &#225;rvores que viveram h&#225; milh&#245;es de anos. &#201; queimada para gerar eletricidade e para f&#225;bricas de a&#231;o.</p>
+
+      <h3>Como funciona?</h3>
+      <ul>
+        <li>&#201; extra&#237;do de minas por c&#227;es de minera&#231;&#227;o ou no subsolo.</li>
+        <li>Nas termel&#233;tricas, o carv&#227;o &#233; queimado.</li>
+        <li>O calor ferve &#225;gua, o vapor move a turbina e o gerador produz energia.</li>
+      </ul>
+
+      <h3>Usos</h3>
+      <ul>
+        <li>Gerar eletricidade em usinas termel&#233;tricas.</li>
+        <li>Produzir a&#231;o nas sider&#250;rgicas.</li>
+      </ul>
+
+      <h3>Problemas</h3>
+      <ul>
+        <li>Acaba e n&#227;o se renova.</li>
+        <li>&#201; uma das fontes que mais poluem o ar.</li>
+        <li>A minera&#231;&#227;o destr&#237; montanhas e paisagens.</li>
+      </ul>
+
+      <div class="figura">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="200" fill="#370617"/>
+          <rect x="40" y="80" width="120" height="100" fill="#5c6672"/>
+          <polygon points="40,80 100,40 160,80" fill="#8d99ae"/>
+          <rect x="70" y="120" width="30" height="60" fill="#1a1a1a"/>
+          <circle cx="85" cy="135" r="10" fill="#e63946"/>
+          <text x="100" y="180" font-size="11" fill="#fff" text-anchor="middle">Usina</text>
+          <rect x="230" y="130" width="60" height="35" rx="4" fill="#212529"/>
+          <rect x="300" y="140" width="50" height="25" rx="4" fill="#212529"/>
+          <g fill="#495057">
+            <ellipse cx="250" cy="125" rx="18" ry="10"/>
+            <ellipse cx="320" cy="135" rx="15" ry="9"/>
+          </g>
+          <text x="290" y="185" font-size="11" fill="#fff" text-anchor="middle">Pedras de carv&#227;o</text>
+          <path d="M120 70 Q140 40 160 55" stroke="#adb5bd" stroke-width="6" fill="none" stroke-linecap="round" opacity=".6"/>
+        </svg>
+        <p>O carv&#227;o &#233; queimado na usina e o vapor gera eletricidade, soltando muita fuma&#231;a.</p>
+      </div>
+
+      <button class="voltar" onclick="mostrar('naorenovaveis')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- G&#225;s Natural -->
+  <section id="gas" class="page">
+    <div class="detail">
+      <h2>&#128293; G&#225;s Natural</h2>
+      <span class="tag">N&#227;o renov&#225;vel</span>
+
+      <h3>O que &#233;?</h3>
+      <p>&#201; um g&#225;s sem cor que existe junto com o petr&#243;leo no subsolo. Usado para cozinhar, aquecer &#225;gua e gerar eletricidade. &#201; o g&#225;s de fog&#227;o e de botij&#227;o!</p>
+
+      <h3>Como funciona?</h3>
+      <ul>
+        <li>&#201; extra&#237;do de po&#231;os no subsolo ou no fundo do mar.</li>
+        <li>Corre por longos gasodutos at&#233; as cidades.</li>
+        <li>Nas usinas, &#233; queimado para mover turbinas e gerar energia.</li>
+      </ul>
+
+      <h3>Usos</h3>
+      <ul>
+        <li>Cozinhar e aquecer &#225;gua nas casas (g&#225;s de cozinha).</li>
+        <li>Gerar eletricidade nas usinas t&#233;rmicas.</li>
+        <li>Combust&#237;vel em ve&#237;culos (GNV).</li>
+      </ul>
+
+      <h3>Problemas</h3>
+      <ul>
+        <li>&#201; finito: um dia vai acabar.</li>
+        <li>A queima emite g&#225;s do efeito estufa.</li>
+        <li>Vazamentos podem causar explos&#245;es.</li>
+      </ul>
+
+      <div class="figura">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="200" fill="#1d3557"/>
+          <circle cx="80" cy="100" r="40" fill="#f1faee"/>
+          <text x="80" y="108" font-size="20" text-anchor="middle" fill="#e63946" font-weight="bold">G&#225;s</text>
+          <line x1="120" y1="100" x2="260" y2="100" stroke="#a8dadc" stroke-width="8" stroke-linecap="round"/>
+          <rect x="260" y="60" width="90" height="90" rx="8" fill="#e76f51"/>
+          <text x="305" y="105" font-size="13" fill="#fff" text-anchor="middle">Cozinha</text>
+          <rect x="280" y="115" width="20" height="20" fill="#f4a261"/>
+          <text x="200" y="150" font-size="12" fill="#cfe8d8" text-anchor="middle">Gasoduto</text>
+          <text x="80" y="165" font-size="11" fill="#cfe8d8" text-anchor="middle">Reservat&#243;rio</text>
+        </svg>
+        <p>O g&#225;s viaja pelos gasodutos e chega at&#233; os fog&#225;es das casas e as usinas.</p>
+      </div>
+
+      <button class="voltar" onclick="mostrar('naorenovaveis')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <!-- Nuclear -->
+  <section id="nuclear" class="page">
+    <div class="detail">
+      <h2>&#9883;&#65039; Energia Nuclear</h2>
+      <span class="tag">N&#227;o renov&#225;vel</span>
+
+      <h3>O que &#233;?</h3>
+      <p>&#201; a energia produzida nas usinas nucleares, que usam o metal <strong>ur&#226;nio</strong>. A parti&#231;&#227;o dos &#225;tomos do ur&#226;nio libera um calor enorme, usado para gerar eletricidade.</p>
+
+      <h3>Como funciona?</h3>
+      <ul>
+        <li>O ur&#226;nio &#233; colocado no reator da usina.</li>
+        <li>Os &#225;tomos s&#227;o partidos (fiss&#227;o nuclear), liberando calor.</li>
+        <li>O calor ferve &#225;gua, o vapor move turbinas e gera energia.</li>
+      </ul>
+
+      <h3>Caracter&#237;sticas</h3>
+      <ul>
+        <li>Gera muita energia com pouco ur&#226;nio.</li>
+        <li>N&#227;o emite gases poluentes enquanto funciona.</li>
+        <li>O Brasil tem usinas em Angra dos Reis (RJ).</li>
+      </ul>
+
+      <h3>Problemas</h3>
+      <ul>
+        <li>O lixo radioativo fica perigoso por milhares de anos.</li>
+        <li>Acidentes nucleares s&#227;o muito graves.</li>
+        <li>O ur&#226;nio tamb&#233;m acaba um dia.</li>
+      </ul>
+
+      <div class="figura">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="200" fill="#3a0ca3"/>
+          <rect x="100" y="60" width="200" height="120" rx="10" fill="#4361ee"/>
+          <rect x="150" y="100" width="100" height="80" rx="6" fill="#7209b7"/>
+          <circle cx="200" cy="115" r="14" fill="#ffd166"/>
+          <ellipse cx="200" cy="115" rx="45" ry="15" fill="none" stroke="#f72585" stroke-width="2"/>
+          <ellipse cx="200" cy="115" rx="45" ry="15" fill="none" stroke="#f72585" stroke-width="2" transform="rotate(60 200 115)"/>
+          <ellipse cx="200" cy="115" rx="45" ry="15" fill="none" stroke="#f72585" stroke-width="2" transform="rotate(120 200 115)"/>
+          <text x="200" y="50" font-size="13" fill="#fff" text-anchor="middle">Usina nuclear</text>
+          <text x="200" y="195" font-size="11" fill="#e0d7ff" text-anchor="middle">&#193;tomos de ur&#226;nio girando no reator</text>
+        </svg>
+        <p>No reator, os &#225;tomos de ur&#226;nio s&#227;o partidos e liberam o calor que gera eletricidade.</p>
+      </div>
+
+      <button class="voltar" onclick="mostrar('naorenovaveis')">&#8592; Voltar</button>
+    </div>
+  </section>
+
+  <footer>Sustentabilidade &copy; 2026</footer>
+</div>
+
+<script>
+  function mostrar(id) {
+    document.querySelectorAll('.page').forEach(function (p) {
+      p.classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
